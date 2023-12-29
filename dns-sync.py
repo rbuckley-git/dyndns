@@ -7,6 +7,7 @@
 import requests
 import json
 import argparse
+import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument("zone",help="Cloudflare zone to check or update")
@@ -47,4 +48,5 @@ myip = find_myip()
 
 if id and record["content"] != myip:
     record["content"] = myip
+    record["comment"] = "Updated " + datetime.datetime.now().replace(microsecond=0).isoformat()
     update_dns_record( id, record )
