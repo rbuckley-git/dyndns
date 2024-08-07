@@ -38,7 +38,7 @@ def update_dns_record( id, record ):
         print(record["name"],"updated to",record["content"])
 
 def find_myip():
-    response = requests.get( url="https://domains.google.com/checkip" )
+    response = requests.get( url="https://api.ipify.org" )
     if response.status_code == 200:
         return response.content.decode('UTF-8')
 
